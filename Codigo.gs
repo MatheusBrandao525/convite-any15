@@ -13,6 +13,7 @@
 
 const PLANILHA_ID = '1uMZ8lLoZtVrH6eTJVxUPQykj4sknPSqa3KQULW551ms';
 const NOME_ABA = 'Confirmações';
+const FUSO = 'America/Sao_Paulo'; // horário de Brasília
 const CABECALHO = ['Data/hora', 'Nome', 'WhatsApp', 'Presença', 'Adultos', 'Crianças', 'Total', 'Recado'];
 
 function doPost(e) {
@@ -27,7 +28,7 @@ function doPost(e) {
     const vai = p.presenca === 'sim';
 
     aba.appendRow([
-      new Date(),
+      Utilities.formatDate(new Date(), FUSO, 'dd/MM/yyyy HH:mm'),
       limpar_(p.nome),
       "'" + String(p.telefone || '').replace(/[^\d() -]/g, '').slice(0, 20), // apóstrofo mantém como texto
       vai ? 'Vai ✅' : 'Não vai ❌',
