@@ -10,8 +10,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Any Karoliny · 15 anos 💜">
 <meta property="og:description" content="Sábado, 12 de dezembro, às 19h. Toque para ver o convite e confirmar sua presença!">
-<meta property="og:image" content="https://matheusbrandao525.github.io/convite-any15/convite.jpg">
-<meta property="og:url" content="https://matheusbrandao525.github.io/convite-any15/">
+<meta property="og:image" content="https://any15anos.github.io/convite.jpg">
+<meta property="og:url" content="https://any15anos.github.io/">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,8 +68,8 @@ const CONFIG = {
 
   .dica{text-align:center; font-size:13px; color:#8a7a9c; margin:12px 0 0}
 
-  .contagem{display:flex; justify-content:center; gap:10px; margin:22px 0 4px}
-  .contagem div{background:#fff; border-radius:14px; padding:10px 0; width:72px; text-align:center;
+  .contagem{display:flex; justify-content:center; gap:8px; margin:22px 0 4px}
+  .contagem div{background:#fff; border-radius:14px; padding:10px 0; width:68px; text-align:center;
     box-shadow:0 4px 14px rgba(112,52,141,.08)}
   .contagem b{display:block; font-family:"Cormorant Garamond",serif; font-size:30px; color:var(--roxo); line-height:1}
   .contagem span{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:#9b8aae}
@@ -152,6 +152,7 @@ const CONFIG = {
     <div><b id="cDias">–</b><span>dias</span></div>
     <div><b id="cHoras">–</b><span>horas</span></div>
     <div><b id="cMin">–</b><span>min</span></div>
+    <div><b id="cSeg">–</b><span>seg</span></div>
   </div>
 
   <!-- CONFIRMAÇÃO -->
@@ -265,8 +266,9 @@ const CONFIG = {
     $("cDias").textContent = Math.floor(s/86400);
     $("cHoras").textContent = Math.floor(s%86400/3600);
     $("cMin").textContent = Math.floor(s%3600/60);
+    $("cSeg").textContent = String(s%60).padStart(2, "0");
   }
-  tick(); setInterval(tick, 30000);
+  tick(); setInterval(tick, 1000);
 
   // Contadores de pessoas
   const qtd = { adultos:1, criancas:0 };
